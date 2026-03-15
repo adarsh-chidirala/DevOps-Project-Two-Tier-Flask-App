@@ -121,15 +121,15 @@ This guide provides a streamlined process for installing Jenkins on Ubuntu syste
     ```
 
 2.  **Add Jenkins Repository and Install:**
-    ***Add the GPG key for the official Jenkins repository 
+    **Add the GPG key for the official Jenkins repository 
     ```bash
         curl -fsSL https://pkg.jenkins.io | sudo tee \ /usr/share/keyrings/jenkins-keyring.asc > /dev/null
     ```
-    ***Add the repository to your sources list       
+    **Add the repository to your sources list       
     ```bash
         echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \ https://pkg.jenkins.io/debian-stable binary/" | sudo tee \ /etc/apt/sources.list.d/jenkins.list > /dev/null
     ```
-    ***Update and install    
+    **Update and install    
     ```bash
         sudo apt update
         sudo apt install jenkins -y
