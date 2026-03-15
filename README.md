@@ -111,6 +111,8 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
 
 ---
 
+This guide provides a streamlined process for installing Jenkins on Ubuntu systems. It includes the updated 2026 GPG signing keys to prevent common repository errors.
+
 ### **5. Step 3: Jenkins Installation and Setup**
 
 1.  **Install Java (OpenJDK 17):**
@@ -119,11 +121,20 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
     ```
 
 2.  **Add Jenkins Repository and Install:**
+    
+    # Add the GPG key for the official Jenkins repository 
     ```bash
-    curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-    echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
-    sudo apt update
-    sudo apt install jenkins -y
+        curl -fsSL https://pkg.jenkins.io | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+    ```
+    # Add the repository to your sources list       
+    ```bash
+        echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \ https://pkg.jenkins.io/debian-stable binary/" | sudo tee \ /etc/apt/sources.list.d/jenkins.list > /dev/null
+    ```
+    # Update and install    
+    ```bash
+        sudo apt update
+        sudo apt install jenkins -y
     ```
 
 3.  **Start and Enable Jenkins Service:**
