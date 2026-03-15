@@ -121,27 +121,31 @@ This guide provides a streamlined process for installing Jenkins on Ubuntu syste
     ```
 
 2.  **Add Jenkins Repository and Install:**
-    **Add the GPG key for the official Jenkins repository 
+
+    Add the GPG key for the official Jenkins repository 
     ```bash
-        curl -fsSL https://pkg.jenkins.io | sudo tee \ /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+        curl -fsSL https://pkg.jenkins.io | sudo tee
+    \ /usr/share/keyrings/jenkins-keyring.asc > /dev/null
     ```
-    **Add the repository to your sources list       
+    Add the repository to your sources list       
     ```bash
-        echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \ https://pkg.jenkins.io/debian-stable binary/" | sudo tee \ /etc/apt/sources.list.d/jenkins.list > /dev/null
+        echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]
+    \ https://pkg.jenkins.io/debian-stable binary/" | sudo tee
+    \ /etc/apt/sources.list.d/jenkins.list > /dev/null
     ```
-    **Update and install    
+    Update and install    
     ```bash
         sudo apt update
         sudo apt install jenkins -y
     ```
 
-3.  **Start and Enable Jenkins Service:**
+4.  **Start and Enable Jenkins Service:**
     ```bash
     sudo systemctl start jenkins
     sudo systemctl enable jenkins
     ```
 
-4.  **Initial Jenkins Setup:**
+5.  **Initial Jenkins Setup:**
     * Retrieve the initial admin password:
         ```bash
         sudo cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -149,7 +153,7 @@ This guide provides a streamlined process for installing Jenkins on Ubuntu syste
     * Access the Jenkins dashboard at `http://<ec2-public-ip>:8080`.
     * Paste the password, install suggested plugins, and create an admin user.
 
-5.  **Grant Jenkins Docker Permissions:**
+6.  **Grant Jenkins Docker Permissions:**
     ```bash
     sudo usermod -aG docker jenkins
     sudo systemctl restart jenkins
